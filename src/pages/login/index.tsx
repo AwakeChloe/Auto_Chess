@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {View, TextInput, StyleSheet, Text, Dimensions} from "react-native";
+import { View, StyleSheet, Text } from 'react-native'
 import Input from '../../components/Input'
 import Loading from '../../components/loading'
 import Button from '../../components/Button'
+import Toast from '../../components/Toast'
 import { connect } from 'react-redux'
 import { selectLoginState } from '../../redux/selector'
 import { ReduxProps, ReduxState } from '../../redux/interface'
@@ -18,9 +19,6 @@ function mapStateToProps (state: ReduxState) {
     loginState: selectLoginState(state)
   }
 }
-
-const screenWidth = Math.round(Dimensions.get('window').width);
-const screenHeight = Math.round(Dimensions.get('window').height);
 
 const Home: React.FC<Props> = ({dispatch, loginState}) => {
   const [studentId, setStudentId] = useState()
@@ -60,9 +58,8 @@ const Home: React.FC<Props> = ({dispatch, loginState}) => {
         <Button title={'忘记密码?'} onPress={() => {}}>
         </Button>
       </View>
-      <View style={styles.centerContainer}>
-        <Loading loading={loginState.isLogging}/>
-      </View>
+      <Loading loading={loginState.isLogging}/>
+      <Toast/>
     </View>
   )
 }
@@ -82,11 +79,6 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 44,
     zIndex: 999,
-  },
-  centerContainer: {
-    position: 'absolute',
-    left: screenWidth/2 - 50,
-    top: screenHeight/2 - 50
   },
   buttonContainer: {
     marginTop: 10,

@@ -1,9 +1,10 @@
 import { handleActions } from 'redux-actions'
-import { LOGIN_SUCCESS, REQUEST_LOGIN } from './actionTypes'
+import { LOGIN_SUCCESS, REQUEST_LOGIN, LOGIN_FAILED } from './actionTypes'
 
 const initialState = {
   loginIn: false,
-  isLogging: false
+  isLogging: false,
+  loginFailedMessage: ''
 }
 
 export type LoginState = typeof initialState
@@ -20,6 +21,13 @@ const loginReducer = handleActions<LoginState>({
     return {
       ...state,
       isLogging: true
+    }
+  },
+  [LOGIN_FAILED] (state, action) {
+    return {
+      ...state,
+      loginFailedMessage: action.payload.loginFailedMessage,
+      isLogging: false
     }
   }
 }, initialState)

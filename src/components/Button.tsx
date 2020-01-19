@@ -9,7 +9,7 @@ interface Props extends ButtonProps{
 const aButton: React.FC<Props> = ({title, onPress, containerHeight,containerWidth}) => {
   return (
     <View style={[styles.buttonContainer, { width: containerWidth, height: containerHeight }]}>
-      <Button title={title} onPress={onPress}>
+      <Button color={'white'} title={title} onPress={onPress}>
       </Button>
     </View>
   )
@@ -17,7 +17,7 @@ const aButton: React.FC<Props> = ({title, onPress, containerHeight,containerWidt
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    backgroundColor: '#d5ff3e',
+    backgroundColor: '#4fb2ff',
     width: 100,
     height: 35,
     borderRadius: 15
