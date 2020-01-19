@@ -1,21 +1,17 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, Text, TextInputProps, StyleProp, ViewStyle } from "react-native";
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { View, TextInput, StyleSheet, TextInputProps, StyleProp, ViewStyle } from "react-native";
 
 interface Props extends TextInputProps{
   containerStyle?: StyleProp<ViewStyle>
 }
 
-const Input: React.FC<Props> = ({ placeholder,
-                                  keyboardType,
-                                  style,
-                                  containerStyle}) => {
+const Input: React.FC<Props> = (props) => {
+  const { style, containerStyle, ...restProps } = props
   return(
     <View style={[styles.inputContainer, containerStyle]}>
       <TextInput
         style={[styles.input, style]}
-        placeholder={placeholder}
-        keyboardType={keyboardType}
+        {...restProps}
       />
     </View>
   )

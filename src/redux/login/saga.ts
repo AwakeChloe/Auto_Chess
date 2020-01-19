@@ -8,17 +8,15 @@ export default function* watchLoginIn () {
     const { payload } = yield take(requestLogin)
     const { studentId, password } = payload
     yield fork(login, studentId, password)
-    console.log(1)
   }
 }
 
 function* login (studentId: number, password: string) {
   try {
-    console.log(2)
     const res = yield call(loginApi.login, studentId, password)
     if (res.data.status) {
       yield LocalStorage.set('token', res.data.token)
-      put(loginSuccess({}))
+      yield put(loginSuccess({}))
     }
   } catch (e) {
     console.log(e)
