@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import Input from '../../components/Input'
 import Loading from '../../components/loading'
@@ -26,6 +26,10 @@ const Home: React.FC<Props> = ({dispatch, loginState}) => {
 
   const login = () => {
     if (loginState.isLogging) {
+      return
+    }
+    if (!studentId || !password) {
+      Toast.show('请输入学号/密码')
       return
     }
     dispatch(requestLogin({ studentId, password }))
