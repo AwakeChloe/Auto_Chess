@@ -4,7 +4,9 @@ import { LOGIN_SUCCESS, REQUEST_LOGIN, LOGIN_FAILED } from './actionTypes'
 const initialState = {
   loginIn: false,
   isLogging: false,
-  loginFailedMessage: ''
+  loginFailedMessage: '',
+  college: '',
+  profession: ''
 }
 
 export type LoginState = typeof initialState
@@ -14,7 +16,9 @@ const loginReducer = handleActions<LoginState>({
     return {
       ...state,
       loginIn: true,
-      isLogging: false
+      isLogging: false,
+      college: action.payload.college,
+      profession: action.payload.profession
     }
   },
   [REQUEST_LOGIN] (state, action) {

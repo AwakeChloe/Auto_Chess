@@ -58,10 +58,6 @@ const Home: React.FC<Props> = ({dispatch, loginState}) => {
         >
         </Button>
       </View>
-      <View style={styles.buttonContainer}>
-        <Button title={'忘记密码?'} onPress={() => {}}>
-        </Button>
-      </View>
       <Loading loading={loginState.isLogging}/>
       <Toast/>
     </View>
@@ -85,7 +81,7 @@ const styles = StyleSheet.create({
     zIndex: 999,
   },
   buttonContainer: {
-    marginTop: 10,
+    marginTop: 30,
     flexDirection: 'row',
     justifyContent: 'center'
   }

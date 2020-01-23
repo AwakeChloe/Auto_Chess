@@ -1,0 +1,1 @@
+export const ENTER_PROFILE = 'ENTER_PROFILE'
