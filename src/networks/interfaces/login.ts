@@ -3,3 +3,8 @@ export interface ILogin {
   status: number
   message: string
 }
+
+export interface IVerification {
+  status: number
+  message: string
+}

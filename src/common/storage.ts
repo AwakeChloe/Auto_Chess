@@ -15,7 +15,6 @@ export class Storage {
   async get<T> (key: string): Promise<T | undefined> {
     key = this.getPrefixedKey(key)
     const value = await AsyncStorage.getItem(key)
-
     if (value) return JSON.parse(value)
     return undefined
   }

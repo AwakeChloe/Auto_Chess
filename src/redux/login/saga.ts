@@ -1,16 +1,32 @@
 import { call, put, take, fork } from 'redux-saga/effects'
-import {requestLogin, loginSuccess, loginFailed} from './actions'
+import { requestLogin, loginSuccess, loginFailed, requestTokenVerification } from './actions'
 import loginApi from '../../networks/api/login'
 import { LocalStorage } from '../../common/storage'
 import Toast from '../../components/Toast'
 import { Actions } from 'react-native-router-flux'
 import { ENTER_PROFILE } from '../../common/scenes'
 
-export default function* watchLoginIn () {
+export function* watchLoginIn () {
   while (true) {
     const { payload } = yield take(requestLogin)
     const { studentId, password } = payload
     yield fork(login, studentId, password)
+  }
+}
+
+export function* watchTokenVerification () {
+  while (true) {
+    const { payload } = yield take(requestTokenVerification)
+    const { token } = payload
+    yield fork(tokenVerification, token)
+  }
+}
+
+function* tokenVerification (token: string) {
+  try {
+    yield call(loginApi.tokenVerification, token)
+  } catch (e) {
+    console.log(e)
   }
 }
 

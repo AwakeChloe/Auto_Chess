@@ -8,7 +8,8 @@ import { connect } from 'react-redux'
 import { selectLoginState } from '../../redux/selector'
 import { ReduxProps, ReduxState } from '../../redux/interface'
 import { LoginState } from '../../redux/login/reducer'
-import { requestLogin } from '../../redux/login/actions'
+import { requestLogin, requestTokenVerification } from '../../redux/login/actions'
+import { LocalStorage } from '../../common/storage'
 
 interface Props extends ReduxProps {
   loginState: LoginState
@@ -23,6 +24,18 @@ function mapStateToProps (state: ReduxState) {
 const Home: React.FC<Props> = ({dispatch, loginState}) => {
   const [studentId, setStudentId] = useState()
   const [password, setPassword] = useState()
+
+  React.useEffect(() => {
+    autoLogin().then()
+  }, [])
+
+  const autoLogin = async () => {
+    let token = await LocalStorage.get('token')
+    if (token) {
+      dispatch(requestTokenVerification({token}))
+      Toast.show('正在自动登录...')
+    }
+  }
 
   const login = () => {
     if (loginState.isLogging) {
@@ -45,7 +58,7 @@ const Home: React.FC<Props> = ({dispatch, loginState}) => {
                placeholderTextColor="#acacac"
                onChangeText={(text) => setStudentId(Number(text))}
         />
-        <Input placeholder={'身份证后六位'}
+        <Input placeholder={'云家园密码'}
                secureTextEntry={true}
                placeholderTextColor="#acacac"
                onChangeText={(text) => {setPassword(text)}}
@@ -66,8 +79,6 @@ const Home: React.FC<Props> = ({dispatch, loginState}) => {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginLeft: 16,
-    marginRight: 16,
     marginTop: 40
   },
   loginText: {

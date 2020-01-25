@@ -7,7 +7,7 @@ import * as scenes from './common/scenes'
 const App = () => (
   <Router>
     <Stack key="root">
-        <Scene key="login" component={Login} />
+        <Scene key={scenes.LOGIN} type={'reset'} component={Login} />
         <Scene key={scenes.ENTER_PROFILE} type={'reset'} component={EnterProfile} />
     </Stack>
   </Router>

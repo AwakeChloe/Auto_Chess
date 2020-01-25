@@ -1,5 +1,5 @@
 import BaseApi from '../base_api'
-import { ILogin } from '../interfaces/login'
+import {ILogin, IVerification} from '../interfaces/login'
 import axios from 'axios'
 
 class LoginApi extends BaseApi {
@@ -8,7 +8,14 @@ class LoginApi extends BaseApi {
   }
 
   private urls = {
-    login: '/login'
+    login: '/login',
+    token: '/token'
+  }
+
+  tokenVerification = async (token: string) => {
+    return await this.instance.post<IVerification>(this.urls.token, {
+      token
+    })
   }
 
   login = async (studentId: number, password: string) => {
