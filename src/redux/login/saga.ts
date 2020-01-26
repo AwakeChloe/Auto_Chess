@@ -24,7 +24,16 @@ export function* watchTokenVerification () {
 
 function* tokenVerification (token: string) {
   try {
-    yield call(loginApi.tokenVerification, token)
+    const res = yield call(loginApi.tokenVerification, token)
+    if (res.data.status) {
+      yield put(loginSuccess({
+        college: res.data.college,
+        profession: res.data.profession
+      }))
+    } else {
+      yield put(loginFailed({loginFailedMessage: '自动登录失败'}))
+      Toast.show('验证已过期,请重新登录')
+    }
   } catch (e) {
     console.log(e)
   }

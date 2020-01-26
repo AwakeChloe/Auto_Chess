@@ -6,8 +6,8 @@ import queryProfile from '../../networks/api/enter_profile'
 export default function* watchQuery () {
   while (true) {
     const { payload } = yield take(requestQuery)
-    const { gameId } = payload
-    yield fork(query, gameId)
+    const { name } = payload
+    yield fork(query, name)
   }
 }
 

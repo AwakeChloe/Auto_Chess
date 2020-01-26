@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { LOGIN_SUCCESS, REQUEST_LOGIN, LOGIN_FAILED } from './actionTypes'
+import { LOGIN_SUCCESS, REQUEST_LOGIN, LOGIN_FAILED, REQUEST_TOKEN_VERIFICATION } from './actionTypes'
 
 const initialState = {
   loginIn: false,
@@ -22,6 +22,12 @@ const loginReducer = handleActions<LoginState>({
     }
   },
   [REQUEST_LOGIN] (state, action) {
+    return {
+      ...state,
+      isLogging: true
+    }
+  },
+  [REQUEST_TOKEN_VERIFICATION] (state, action) {
     return {
       ...state,
       isLogging: true

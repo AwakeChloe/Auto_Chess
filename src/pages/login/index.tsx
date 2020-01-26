@@ -25,18 +25,6 @@ const Home: React.FC<Props> = ({dispatch, loginState}) => {
   const [studentId, setStudentId] = useState()
   const [password, setPassword] = useState()
 
-  React.useEffect(() => {
-    autoLogin().then()
-  }, [])
-
-  const autoLogin = async () => {
-    let token = await LocalStorage.get('token')
-    if (token) {
-      dispatch(requestTokenVerification({token}))
-      Toast.show('正在自动登录...')
-    }
-  }
-
   const login = () => {
     if (loginState.isLogging) {
       return

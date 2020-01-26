@@ -20,7 +20,7 @@ const mapStateToProps = (state: ReduxState) => {
 }
 
 const EnterProfile: React.FC<Props> = ({loginState, dispatch}) => {
-  let name: string = ''
+  const [name, setName] = useState<string>()
 
   const queryName = () => {
     console.log(name)
@@ -38,10 +38,14 @@ const EnterProfile: React.FC<Props> = ({loginState, dispatch}) => {
       <View>
         <Text style={styles.baseText}>填写你的昵称:</Text>
         <Input placeholderTextColor="#acacac"
-               onChangeText={text => name = text}
+               onChangeText={text => setName(text)}
         />
       </View>
-      <Button title={'确认信息并进入游戏'} onPress={queryName}>
+      <Button title={'确认信息并进入游戏'}
+              onPress={queryName}
+              containerWidth={200}
+              style={{marginTop: 16}}
+      >
       </Button>
       <Toast/>
     </View>
