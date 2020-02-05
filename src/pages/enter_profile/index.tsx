@@ -43,8 +43,8 @@ const EnterProfile: React.FC<Props> = ({loginState, dispatch}) => {
       </View>
       <Button title={'确认信息并进入游戏'}
               onPress={queryName}
-              containerWidth={200}
-              style={{marginTop: 16}}
+              buttonContainerStyle={{width:200}}
+              buttonCenterContainerStyle={{marginTop: 16}}
       >
       </Button>
       <Toast/>

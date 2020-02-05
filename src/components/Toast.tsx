@@ -14,14 +14,14 @@ const screenHeight = Math.round(Dimensions.get('window').height);
 const Toast: Func = () => {
   const [fadeAnim] = useState(new Animated.Value(0))
   const [inlineText, setInlineText] = useState('提示')
-  let animateRunning = false
+  const [animateRunning, setAnimateRunning] = useState(false)
 
   Toast.show = (inlineText: string) => {
     if (animateRunning) {
       return
     }
     setInlineText(inlineText)
-    animateRunning = true
+    setAnimateRunning(true)
     Animated.timing(                  // 随时间变化而执行动画
       fadeAnim,                       // 动画中的变量值
       {
@@ -37,7 +37,7 @@ const Toast: Func = () => {
           duration: 500,              // 让动画持续一段时间
         }
       ).start();
-      animateRunning = false
+      setAnimateRunning(false)
     }, 1500)
   }
 

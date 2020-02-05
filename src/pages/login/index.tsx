@@ -55,7 +55,7 @@ const Home: React.FC<Props> = ({dispatch, loginState}) => {
       <View style={styles.buttonContainer}>
         <Button title={'登录'}
                 onPress={login}
-                containerWidth={200}
+                buttonContainerStyle={{width:200}}
         >
         </Button>
       </View>

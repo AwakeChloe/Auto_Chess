@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   centerContainer: {
     position: 'absolute',
     left: screenWidth/2 - 50,
-    top: screenHeight/2 - 50
+    top: screenHeight/2 - 138
   }
 })
 

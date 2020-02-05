@@ -4,7 +4,7 @@ import loginApi from '../../networks/api/login'
 import { LocalStorage } from '../../common/storage'
 import Toast from '../../components/Toast'
 import { Actions } from 'react-native-router-flux'
-import { ENTER_PROFILE } from '../../common/scenes'
+import { ENTER_PROFILE, HOME } from '../../common/scenes'
 
 export function* watchLoginIn () {
   while (true) {
@@ -30,6 +30,11 @@ function* tokenVerification (token: string) {
         college: res.data.college,
         profession: res.data.profession
       }))
+      if (res.data.isFirstEnter) {
+        setTimeout(() => {
+          Actions[HOME]()
+        }, 1000)
+      }
     } else {
       yield put(loginFailed({loginFailedMessage: '自动登录失败'}))
       Toast.show('验证已过期,请重新登录')
@@ -49,9 +54,15 @@ function* login (studentId: number, password: string) {
         profession: res.data.profession
       }))
       Toast.show('登录成功')
-      setTimeout(() => {
-        Actions[ENTER_PROFILE]()
-      }, 1000)
+      if (res.data.isFirstEnter) {
+        setTimeout(() => {
+          Actions[ENTER_PROFILE]()
+        }, 1000)
+      } else {
+        setTimeout(() => {
+          Actions[HOME]()
+        }, 1000)
+      }
     } else {
       yield put(loginFailed({loginFailedMessage: res.data.msg}))
       Toast.show(res.data.msg)

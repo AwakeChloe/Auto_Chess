@@ -4,6 +4,7 @@ import EnterProfile from './pages/enter_profile'
 import React from 'react';
 import * as scenes from './common/scenes'
 import GameGuide from './pages/game_guide'
+import Home from './pages/home'
 
 const App = () => (
   <Router>
@@ -12,6 +13,7 @@ const App = () => (
       <Scene key={scenes.LOGIN} back type={'push'} component={Login} />
 
       <Scene key={scenes.ENTER_PROFILE} type={'reset'} component={EnterProfile} />
+      <Scene key={scenes.HOME} type={'reset'} navigationBarStyle={{height: 0}} component={Home} />
     </Stack>
   </Router>
 );

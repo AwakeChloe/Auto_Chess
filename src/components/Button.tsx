@@ -2,15 +2,14 @@ import React from 'react'
 import { View, ViewStyle, Button, StyleSheet, ButtonProps } from 'react-native'
 
 interface Props extends ButtonProps{
-  containerWidth?: number
-  containerHeight?: number
-  style?: ViewStyle
+  buttonCenterContainerStyle?: ViewStyle
+  buttonContainerStyle?: ViewStyle
 }
 
-const aButton: React.FC<Props> = ({title, onPress, containerHeight,containerWidth, style}) => {
+const aButton: React.FC<Props> = ({title, onPress, buttonCenterContainerStyle, buttonContainerStyle}) => {
   return (
-    <View style={[styles.buttonCenterContainer, style]}>
-      <View style={[styles.buttonContainer, { width: containerWidth, height: containerHeight }]}>
+    <View style={[styles.buttonCenterContainer, buttonCenterContainerStyle]}>
+      <View style={[styles.buttonContainer, buttonContainerStyle]}>
         <Button color={'white'} title={title} onPress={onPress}>
         </Button>
       </View>
@@ -28,6 +27,7 @@ const styles = StyleSheet.create({
   buttonCenterContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 
