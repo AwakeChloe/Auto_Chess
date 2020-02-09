@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ViewStyle, Button, StyleSheet, ButtonProps } from 'react-native'
+import { View, ViewStyle, Text, StyleSheet, ButtonProps, TouchableOpacity } from 'react-native'
 
 interface Props extends ButtonProps{
   buttonCenterContainerStyle?: ViewStyle
@@ -9,10 +9,12 @@ interface Props extends ButtonProps{
 const aButton: React.FC<Props> = ({title, onPress, buttonCenterContainerStyle, buttonContainerStyle}) => {
   return (
     <View style={[styles.buttonCenterContainer, buttonCenterContainerStyle]}>
-      <View style={[styles.buttonContainer, buttonContainerStyle]}>
-        <Button color={'white'} title={title} onPress={onPress}>
-        </Button>
-      </View>
+      <TouchableOpacity
+        style={[styles.buttonContainer, buttonContainerStyle]}
+        onPress={onPress}
+      >
+        <Text style={{color: 'white'}}>{title}</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -20,6 +22,8 @@ const aButton: React.FC<Props> = ({title, onPress, buttonCenterContainerStyle, b
 const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: '#4fb2ff',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 100,
     height: 35,
     borderRadius: 30

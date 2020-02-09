@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Animated, View, StyleSheet, Text, LayoutChangeEvent, Dimensions } from 'react-native'
 
 interface Props {
 }
 
 interface Func extends React.FC{
+  timer: number
   show: (inlineText: string) => void
 }
 
@@ -15,6 +16,12 @@ const Toast: Func = () => {
   const [fadeAnim] = useState(new Animated.Value(0))
   const [inlineText, setInlineText] = useState('提示')
   const [animateRunning, setAnimateRunning] = useState(false)
+
+  useEffect(() => {
+    return function cleanTimer () {
+      clearTimeout(Toast.timer)
+    }
+  })
 
   Toast.show = (inlineText: string) => {
     if (animateRunning) {
@@ -29,7 +36,7 @@ const Toast: Func = () => {
         duration: 500,              // 让动画持续一段时间
       }
     ).start();
-    setTimeout(() => {
+    Toast.timer = setTimeout(() => {
       Animated.timing(                  // 随时间变化而执行动画
         fadeAnim,                       // 动画中的变量值
         {

@@ -1,7 +1,7 @@
 import { Actions, Router, Scene, Stack } from 'react-native-router-flux'
 import Login from './pages/login'
 import EnterProfile from './pages/enter_profile'
-import React from 'react';
+import React from 'react'
 import * as scenes from './common/scenes'
 import GameGuide from './pages/game_guide'
 import Home from './pages/home'

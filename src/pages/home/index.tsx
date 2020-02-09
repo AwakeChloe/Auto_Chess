@@ -13,6 +13,7 @@ import {
 import BottomNavigationBar from '../../components/Bottom_navigation_bar'
 import HomeMap from './home_map'
 import PageChanger from '../../components/PageChanger'
+import Toast from '../../components/Toast'
 
 const screenWidth = Math.round(Dimensions.get('window').width)
 const screenHeight = Math.round(Dimensions.get('window').height)
@@ -35,6 +36,7 @@ const Home = () => {
       </PageChanger>
       <BottomNavigationBar>
       </BottomNavigationBar>
+      <Toast/>
     </View>
   )
 }

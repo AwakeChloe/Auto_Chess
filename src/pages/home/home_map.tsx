@@ -12,6 +12,8 @@ const HomeMap: React.FC = () => {
                style={styles.image}
         >
         </Image>
+        <View style={styles.testClip}>
+        </View>
       </View>
     </View>
   )
@@ -24,6 +26,10 @@ const styles = StyleSheet.create({
   image: {
     width: screenWidth,
     height: screenWidth / 1422 * 1490
+  },
+  testClip: {
+    width: 100,
+    height: 100,
   }
 })
 
