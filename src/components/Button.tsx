@@ -6,7 +6,7 @@ interface Props extends ButtonProps{
   buttonContainerStyle?: ViewStyle
 }
 
-const aButton: React.FC<Props> = ({title, onPress, buttonCenterContainerStyle, buttonContainerStyle}) => {
+const Button: React.FC<Props> = ({title, onPress, buttonCenterContainerStyle, buttonContainerStyle}) => {
   return (
     <View style={[styles.buttonCenterContainer, buttonCenterContainerStyle]}>
       <TouchableOpacity
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default aButton
+export default Button

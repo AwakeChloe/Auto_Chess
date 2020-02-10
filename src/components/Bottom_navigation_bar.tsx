@@ -47,7 +47,7 @@ const BottomNavigationBar: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'grey',
+    backgroundColor: 'white',
     position: 'absolute',
     bottom: 0,
     width: '100%',

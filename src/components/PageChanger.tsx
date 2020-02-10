@@ -40,14 +40,14 @@ const pageChanger: IPageChanger = (props) => {
       transformX,
       {
         toValue: transformRace + numberTransformX,
-        duration: 500,
+        duration: 200,
       }
     ).start()
     setNumberTransformX(transformRace + numberTransformX)
     setOldIndex(NewIndex)
     setTimeout(() => {
       setAnimateRunning(false)
-    }, 500)
+    }, 200)
     console.log()
   }
 
