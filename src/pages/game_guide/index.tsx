@@ -11,7 +11,7 @@ import { selectLoginState } from '../../redux/selector'
 import { LoginState } from '../../redux/login/reducer'
 import Loading from '../../components/loading'
 import { Actions } from 'react-native-router-flux'
-import { ENTER_PROFILE, LOGIN } from '../../common/scenes'
+import { ENTER_PROFILE, LOGIN, HOME } from '../../common/scenes'
 
 interface Props extends ReduxProps{
   loginState: LoginState
@@ -43,13 +43,20 @@ const GameGuide:React.FC<Props> = ({dispatch, loginState}) => {
              style={{width: '100%', marginTop: 16}}
       >
       </Image>
-      {loginState.loginIn ? (
-        <Button title={'进入游戏'}
-                onPress={() => {Actions[ENTER_PROFILE]()}}
-                buttonContainerStyle={{width:200}}
-        >
-        </Button>
-      ) : (
+      {loginState.loginIn ?
+        loginState.isFirstEnter ? (
+          <Button title={'进入游戏'}
+                  onPress={() => {Actions[ENTER_PROFILE]()}}
+                  buttonContainerStyle={{width:200}}
+          >
+          </Button>
+        ) : (
+          <Button title={'进入游戏'}
+                  onPress={() => {Actions[HOME]()}}
+                  buttonContainerStyle={{width:200}}
+          >
+          </Button>
+        ) : (
         <Button title={'使用云家园账号登录'}
                 onPress={() => {Actions[LOGIN]()}}
                 buttonContainerStyle={{width:200}}

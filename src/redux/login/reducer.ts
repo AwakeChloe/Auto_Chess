@@ -5,6 +5,7 @@ const initialState = {
   loginIn: false,
   isLogging: false,
   loginFailedMessage: '',
+  isFirstEnter: true,
   college: '',
   profession: ''
 }
@@ -17,6 +18,7 @@ const loginReducer = handleActions<LoginState>({
       ...state,
       loginIn: true,
       isLogging: false,
+      isFirstEnter: action.payload.isFirstEnter,
       college: action.payload.college,
       profession: action.payload.profession
     }

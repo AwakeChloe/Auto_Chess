@@ -28,13 +28,9 @@ function* tokenVerification (token: string) {
     if (res.data.status) {
       yield put(loginSuccess({
         college: res.data.college,
-        profession: res.data.profession
+        profession: res.data.profession,
+        isFirstEnter: res.data.isFirstEnter
       }))
-      if (res.data.isFirstEnter) {
-        setTimeout(() => {
-          Actions[HOME]()
-        }, 1000)
-      }
     } else {
       yield put(loginFailed({loginFailedMessage: '自动登录失败'}))
       Toast.show('验证已过期,请重新登录')
@@ -51,7 +47,8 @@ function* login (studentId: number, password: string) {
       yield LocalStorage.set('token', res.data.token)
       yield put(loginSuccess({
         college: res.data.college,
-        profession: res.data.profession
+        profession: res.data.profession,
+        isFirstEnter: res.data.isFirstEnter
       }))
       Toast.show('登录成功')
       if (res.data.isFirstEnter) {

@@ -3,4 +3,3 @@ export const LOGIN = 'LOGIN'
 export const GAME_GUIDE = 'GAME_GUIDE'
 
 export const HOME = 'HOME'
-export const HOME_MAP = 'HOME_MAP'

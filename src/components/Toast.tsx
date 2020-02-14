@@ -20,8 +20,9 @@ const Toast: Func = () => {
   useEffect(() => {
     return function cleanTimer () {
       clearTimeout(Toast.timer)
+      setAnimateRunning(false)
     }
-  })
+  }, [])
 
   Toast.show = (inlineText: string) => {
     if (animateRunning) {
